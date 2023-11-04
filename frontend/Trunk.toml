@@ -1,4 +1,4 @@
 [[hooks]]
 stage = "pre_build"
-command = "tailwindcss"
+command = "npx tailwindcss"
 command_arguments = ["-i", "input.css", "-o", "app.css"]

@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.Builder;
 
+@Builder
 public class PositionResponse {
     @Getter
     @Setter
@@ -24,6 +26,4 @@ public class PositionResponse {
     @Getter
     @Setter
     private ArrayList <String> jobZone;
-
-    
 }
