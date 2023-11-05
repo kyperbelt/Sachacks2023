@@ -2,16 +2,16 @@ package com.example.demo;
 
 import lombok.Getter;
 import lombok.Setter;
+import java.util.ArrayList;
 
 
 public class PositionRequest {
     @Getter
     @Setter
-    private String title;
-
+    private ArrayList<String> titles;
     
-    public PositionRequest(String title){
-        this.title=title;
+    public PositionRequest(ArrayList<String> titles){
+        this.titles = titles;
     }
 
 }
