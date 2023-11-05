@@ -10,20 +10,5 @@ import lombok.Builder;
 public class PositionResponse {
     @Getter
     @Setter
-    private ArrayList <String> tasks;
-    @Getter
-    @Setter
     private ArrayList <String> technologySkills;
-    @Getter
-    @Setter
-    private ArrayList <String> workActivities;
-    @Getter
-    @Setter
-    private ArrayList <String> detailedWorkActivities;
-    @Getter
-    @Setter
-    private ArrayList <String> workContext;
-    @Getter
-    @Setter
-    private ArrayList <String> jobZone;
 }

@@ -36,24 +36,13 @@ public class PositionController {
     }
 
     @CrossOrigin
-    @PostMapping("/test")
+    @PostMapping("/getcareerskills")
     public PositionResponse test(PositionRequest request)
     {
-        ArrayList<String> tasks = new ArrayList<>(Arrays.asList("1", "2"));
-        ArrayList<String> technologySkills = new ArrayList<>(Arrays.asList("3", "4"));
-        ArrayList<String> workActivities = new ArrayList<>(Arrays.asList("5", "6"));
-        ArrayList<String> detailedWorkActivities = new ArrayList<>(Arrays.asList("7", "8"));
-        ArrayList<String> workContext = new ArrayList<>(Arrays.asList("9", "0"));
-        ArrayList<String> jobZone = new ArrayList<>(Arrays.asList("-", "+"));
+        ArrayList<String> technologySkills = new ArrayList<>(Arrays.asList("1", "2"));
 
         return PositionResponse.builder()
-                .tasks(tasks)
                 .technologySkills(technologySkills)
-                .workActivities(workActivities)
-                .detailedWorkActivities(detailedWorkActivities)
-                .workContext(workContext)
-                .jobZone(jobZone)
                 .build();
     }
-
 }
