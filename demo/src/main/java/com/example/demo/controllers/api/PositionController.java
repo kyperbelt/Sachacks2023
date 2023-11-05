@@ -55,6 +55,4 @@ public class PositionController {
                 .build();
     }
 
-    @RequestMapping(value="user", method = RequestMethod.GET)
-
 }
