@@ -35,6 +35,7 @@ public class PositionController {
 
     }
 
+    @CrossOrigin
     @PostMapping("/test")
     public PositionResponse test(PositionRequest request)
     {
