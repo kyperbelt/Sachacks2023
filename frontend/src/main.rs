@@ -1,7 +1,10 @@
+use std::vec;
+
 use gloo_net::http::Request;
 use serde::{Deserialize, Serialize};
 use serde_json::json;
-use wasm_bindgen::JsValue;
+use wasm_bindgen::{JsCast, JsValue};
+use web_sys::{EventTarget, HtmlInputElement};
 use yew::prelude::*;
 
 #[derive(Properties, PartialEq, Clone)]
@@ -30,6 +33,28 @@ pub struct SkillTableProps {
 }
 #[function_component(SkillTable)]
 pub fn skilltable(props: &SkillTableProps) -> Html {
+    let skills = use_state(|| props.skills.clone());
+    let onchanged = {
+        let skills = skills.clone();
+        Callback::from(move |e: Event| {
+            // get the elements id and checked value
+            let target = e.target().unwrap();
+            let target = target.dyn_into::<HtmlInputElement>().unwrap();
+            let id = target.id();
+            let checked = target.checked();
+
+            let mut vec: Vec<(String, bool)> = vec![];
+            let skills = skills.clone();
+            for i in 0..skills.len() {
+                vec.push((skills[i].0.clone(), skills[i].1));
+                if vec[i].0 == id {
+                    vec[i].1 = checked;
+                }
+            }
+            vec.sort_by(|a, b| a.1.cmp(&b.1));
+            skills.clone().set(Vec::clone(&vec));
+        })
+    };
     html! {
         <table class="table-auto">
             <thead>
@@ -39,11 +64,11 @@ pub fn skilltable(props: &SkillTableProps) -> Html {
                 </tr>
             </thead>
             <tbody>
-                {for props.skills.iter().map(|skill| html! {
+                {for skills.iter().map( |skill| html! {
                     <tr>
                         <td class="border px-4 py-2">{skill.0.clone()}</td>
                         <td class="border px-4 py-2">
-                            <input type="checkbox" class="form-checkbox h-5 w-5 text-slate-600" checked={skill.1}/>
+                            <input type="checkbox" id={skill.0.clone()} class="form-checkbox h-5 w-5 text-slate-600" checked={skill.1} onchange={onchanged.clone()}/>
                         </td>
                     </tr>
                 })}
