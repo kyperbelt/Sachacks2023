@@ -54,4 +54,7 @@ public class PositionController {
                 .jobZone(jobZone)
                 .build();
     }
+
+    @RequestMapping(value="user", method = RequestMethod.GET)
+
 }
